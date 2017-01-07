@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>polygon.js - demo</title>
+    <style>
+        *{
+            padding: 0; margin: 0; border: none; outline: none;  }
+        html {
+            font-family: 'Microsoft YaHei', monospace, Helvetica, Arial;
+            font-size: 16px; }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            background: #EFEBFF;
+            margin: 50px 20px;  }
+        .section {
+            width: 50%;
+            border: none; }
+        .wrapper.left {
+            padding: 0 10px 20px 20px;  }
+        .wrapper.right {
+            padding: 0 20px 20px 10px;  }
+        .section .title {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            justify-content: space-between;
+            height: 40px;
+            width: 100%;  }
+        .section .body {
+            height: 500px;
+            background: #fff;
+            width: 100%;  }
+        #iframe {
+            width: 100%;
+            height: 100%;
+            border: none;  }
+        #textarea {
+            width: 100%;
+            height: 100%;
+            font-family: 'Microsoft YaHei Mono', Courier, monospace;
+            font-size: 0.8rem;
+            line-height: 1.2rem;
+            color: #555;
+            resize: none;  }
+        #run-btn {
+            border-radius: 3px;
+            padding: 0.2rem 0.5rem;
+            font-size: 1rem;
+            letter-spacing: 0.1rem;
+            background: #d44f4f;
+            color: #fff;
+            cursor: pointer;  }
+        #run-btn:active {
+            background: #c43f3f;  }
+        @media (max-width: 768px) {
+            .section {
+                width: 100%; }
+            .wrapper.left {
+                padding: 0 20px 0 20px;  }
+            .wrapper.right {
+                padding: 0 20px 20px 20px;  }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="section">
+        <div class="wrapper left">
+            <div class="title">
+                <span class="text">Edit code here</span>
+                <button id="run-btn">run it</button>
+            </div>
+            <div class="body">
+                <textarea id="textarea"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="wrapper right">
+            <div class="title">
+                <span class="text">Result</span>
+            </div>
+            <div class="body">
+                <iframe id="iframe"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        let run_btn = document.querySelector('#run-btn');
+        let textarea = document.querySelector('#textarea');
+        let iframe = document.querySelector('#iframe');
+
+        textarea.value = `
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+</style>
+</head>
+<body>
+<canvas id="canvas" width="400" height="400"></canvas>
+<script src="./polygon.min.js"><\/script>
+<script>
+let p1 = new Polygon({
+    edges: 6,
+    r: 100,
+    bg: '#eef',
+    axis: '#aaf',
+    border: '#aaf',
+    label: [
+        {text: '标签1', size: 16, color: '#888'},
+        {text: '标签2', size: 16, color: '#888'},
+        {text: '标签3', size: 16, color: '#888'},
+        {text: '标签4', size: 16, color: '#888'},
+        {text: '标签5', size: 22, color: 'rgba(244,91,127,.7)'},
+        {text: '标签6', size: 22, color: 'rgba(63,74,147,.7)'},
+    ]
+});
+let p2 = new Polygon({
+    edges: 6,
+    bg: [
+        'rgba(252,180,192,.7)',
+        'rgba(255,169,184,.7)',
+        'rgba(239,86,115,.7)',
+        'rgba(247,60,101,.7)',
+        'rgba(244,91,127,.7)',
+        'rgba(224,140,158,.7)'
+        ],
+    r: [96, 53, 47, 80, 88, 67],
+});
+let p3 = new Polygon({
+    edges: 6,
+    bg: [
+        'rgba(189,217,239,.7)',
+        'rgba(106,160,196,.7)',
+        'rgba(50,35,91,.7)',
+        'rgba(70,62,127,.7)',
+        'rgba(63,74,147,.7)',
+        'rgba(105,152,204,.7)'
+        ],
+    r: [54, 68, 77, 57, 67, 94],
+});
+p1.render({
+    canvas: document.querySelector('canvas'),
+    merge: [p2, p3],
+    animation: 800
+});
+<\/script>
+</body>
+</html>
+        `;
+        run_btn.addEventListener('click', () => {
+            iframe.srcdoc = textarea.value;
+        });
+        run_btn.click();
+    </script>
+</body>
+</html>
