@@ -42,7 +42,7 @@ click [demo](https://nossika.github.io/polygon.js/demo.html) to try it online.
 |merge|Array|[]|draw multi polygon simultaneously<br>*Array member are instances of Polygon*|
 |animation|Number|0|length of animation<br>*unit: ms*|
 
-## Ticks
+## Tips
 
 * First axis is set on 12 o'clock direction, the rests would be set follow by clockwise. We can use parameter `rotate` to change it.
 
