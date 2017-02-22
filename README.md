@@ -1,6 +1,6 @@
 # polygon.js
 
-Create arbitrary polygons, which are suitable for data analysis, with label on canvas.
+Create polygons with text label. They are suitable for data visualization.
 
 ## Examples
 
@@ -18,29 +18,39 @@ Create arbitrary polygons, which are suitable for data analysis, with label on c
 		});
 	</script>
 
-click [demo](https://nossika.github.io/polygon.js/demo.html) to try it online.
+Click [DEMO](https://nossika.github.io/polygon.js/demo.html) to try it!
 
-## Options
+## Init options
 
-|Parameter|Type|Default|Description|
-|:-:|:-:|:-:|---|
-|edges|Number|\\|edges of polygon|
-|r|Number / Array|\\|distance from origin to vertex|
-|rotate|Number|0|clockwise rotation|
-|bg|String / Array|\\|background color|
-|axis|String / Array|\\|axis color|
-|border|String / Array|\\|border color|
-|label|Array|\\|label on each vertex<br>*example:* `[{text: 'text1', size: 20, color: 'red'}, ...]`|
- 
+	let p = new Polygon(options);
+
+* **options** (type: Object)
+
+	* **edges** (required, type: Number): edges of polygon
+	
+	* **r** (required, type: Number / Array of Number): pixels from origin to each vertex
+
+	* **rotate** (type: Number, default: 0): clockwise rotation angle
+
+	* **bg** (type: String / Array of String):  color for each background 
+
+	* **axis** (type: String / Array of String):  color for each axis
+
+	* **border** (type: String / Array of String):  color for each border
+
+	* **label** (type: Array of Object): label on each vertex, example: `[{text: 'text1', size: 20, color: 'red'}, ...]`
+
+
 ## Methods
 
-### render: 
+* **render({canvas, merge, animation})**
 
-|Parameter|Type|Default|Description|
-|:-:|:-:|:-:|---|
-|canvas|HTMLElement|\\|target canvas|
-|merge|Array|[]|draw multi polygon simultaneously<br>*Array member are instances of Polygon*|
-|animation|Number|0|length of animation<br>*unit: ms*|
+	* **canvas** (required, type: HTMLElement): polygon will render on this canvas
+
+	* **merge** (type: Array of Polygon): draw multi polygon simultaneously
+
+	* **aniamtion** (type: Number, default: 0): ms of animation
+
 
 ## Tips
 
